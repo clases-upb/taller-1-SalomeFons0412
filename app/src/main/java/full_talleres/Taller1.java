@@ -196,12 +196,12 @@ public class Taller1 {
    public static float Calcular_horasxviaje(String destino, short distancia, short velocidad) {
     try {//se inicia con un try catch
 
+
         //se declarar las variables y las constanteel problema
-    
         float tpo_viaje = 0;
 
         //se usan las variables y las constantes para el calculo
-        tpo_viaje = (float) distancia / velocidad;
+        tpo_viaje = (float) (distancia / velocidad);
 
         return (float) (int) tpo_viaje;
 
@@ -227,24 +227,26 @@ public class Taller1 {
    Si hay algún error, devuelva -1.*/
 
    public static float Calcular_combustible(int ruta1, int ruta2, int ruta3, int ruta4) {
+
     try {//se inicia con un try catch
+
 
         //se declarar las variables y las constanteel problema
         float aterrizaje = (float) 0.4;
-        float km = (float) (0.2 / 60.8);
-        float despegue = (float) 1.2; 
-        int cantidad_rutas =4;
+        float despegue = (float) 1.2;
+        float km = (float) (0.2 / 60.8); 
+        final int cantidad_rutas =4;
         
 
         //se calcula el combustible total para cada una de las ruta
-        float despg_atrrza= (despegue + aterrizaje)*cantidad_rutas;
+        float total_despegue= (despegue + aterrizaje)*cantidad_rutas;
         float ruta_1 = (float) (ruta1 * km);
         float ruta_2 = (float) (ruta2 * km);
         float ruta_3 = (float) (ruta3 * km);
         float ruta_4 = (float) (ruta4 * km);
 
         //se calcula el combustible total
-        float total = ruta_1 + ruta_2 + ruta_3 + ruta_4 + despg_atrrza;
+        float total = ruta_1 + ruta_2 + ruta_3 + ruta_4 + total_despegue;
 
         return total;
 
@@ -266,28 +268,31 @@ public class Taller1 {
    Si hay algún error, devuelva 0.
    */
 
-   public static String Calcular_peso_luna(byte peso_kilos) { 
+   public static double  Calcular_peso_luna(byte peso_kilos) { 
     
-    try { // Declarar variables y constantes 
-        double gravedad_tierra = 9.81; 
-        double factor_luna = 0.165;
+    try { // se inicia con un try catch
+        
+        
+        // Declarar variables y constantes 
+        double peso_tierra_nuevo=0;
+        double peso_luna_nuevo=0;
+        final float gravedad_tierra = (float)(9.81); 
+        final float factor_luna = (float)(0.165);
 
     // Calcular el peso en la Tierra
-    
-    double peso_tierra_ = peso_kilos * gravedad_tierra;
+     peso_tierra_nuevo = peso_kilos * gravedad_tierra;
 
     // Calcular el peso 
-    double peso_luna_nuevo = peso_tierra_ * factor_luna;
-
-    // Formatear el resultado con 11 decimales
-    String resultado = String.format("%.11f", peso_luna_nuevo);
-
-    return resultado;
-} catch (Exception e) {
+    peso_luna_nuevo = peso_tierra_nuevo * factor_luna;
     
-    return "0";
+    return peso_luna_nuevo;
+
+} 
+
+catch (Exception e) {
+    
+    return 0;
 }
-   
-   
+
 }
 }
